@@ -103,65 +103,6 @@ for script in soup.find_all("script", src=True):
         break
 
 # This ID corresponds to the episodes.js file that contains the episode links of the first season
-# var eps3 = [
-# 'https://video.sibnet.ru/shell.php?videoid=4668131',
-# 'https://video.sibnet.ru/shell.php?videoid=4668135',
-# 'https://video.sibnet.ru/shell.php?videoid=4668139',
-# 'https://video.sibnet.ru/shell.php?videoid=4668143',
-# 'https://video.sibnet.ru/shell.php?videoid=4668146',
-# 'https://video.sibnet.ru/shell.php?videoid=4668149',
-# 'https://video.sibnet.ru/shell.php?videoid=4668152',
-# 'https://video.sibnet.ru/shell.php?videoid=4668154',
-# 'https://video.sibnet.ru/shell.php?videoid=4668157',
-# 'https://video.sibnet.ru/shell.php?videoid=4668162',
-# 'https://video.sibnet.ru/shell.php?videoid=4668168',
-# 'https://video.sibnet.ru/shell.php?videoid=4668174',
-# 'https://video.sibnet.ru/shell.php?videoid=4668180',
-# 'https://video.sibnet.ru/shell.php?videoid=4668185',
-# 'https://video.sibnet.ru/shell.php?videoid=4668191',
-# 'https://video.sibnet.ru/shell.php?videoid=4668198',
-# 'https://video.sibnet.ru/shell.php?videoid=4668203',
-# 'https://video.sibnet.ru/shell.php?videoid=4668120',
-# 'https://video.sibnet.ru/shell.php?videoid=4668210',
-# 'https://video.sibnet.ru/shell.php?videoid=4668212',
-# 'https://video.sibnet.ru/shell.php?videoid=4668216',
-# 'https://video.sibnet.ru/shell.php?videoid=4668223',
-# 'https://video.sibnet.ru/shell.php?videoid=4668225',
-# 'https://video.sibnet.ru/shell.php?videoid=4668227',
-# 'https://video.sibnet.ru/shell.php?videoid=4668229',
-# 'https://video.sibnet.ru/shell.php?videoid=4668230',
-# ];
-# //
-# var eps4 = [
-# 'https://oneupload.to/embed-iatz8lo6d0bg.html',
-# 'https://oneupload.to/embed-4nci6qtbbi1n.html',
-# 'https://oneupload.to/embed-qtpv3tamgj88.html',
-# 'https://oneupload.to/embed-t98k1p7sq922.html',
-# 'https://oneupload.to/embed-r2ricmtgy5oa.html',
-# 'https://oneupload.to/embed-1f74qyrch1hm.html',
-# 'https://oneupload.to/embed-1qbuvgkgdi1m.html',
-# 'https://oneupload.to/embed-ksqh7axzb781.html',
-# 'https://oneupload.to/embed-errmfn5gbfth.html',
-# 'https://oneupload.to/embed-ux5lo4p30sea.html',
-# 'https://oneupload.to/embed-nu1ttzxx69qv.html',
-# 'https://oneupload.to/embed-f254bbw26k76.html',
-# 'https://oneupload.to/embed-jqzw2viq4cqk.html',
-# 'https://oneupload.to/embed-bccxgv9ajuq5.html',
-# 'https://oneupload.to/embed-346c10uv568f.html',
-# 'https://oneupload.to/embed-1r710zc8cvad.html',
-# 'https://oneupload.to/embed-k9pqclp7zfak.html',
-# 'https://oneupload.to/embed-1agwh0pm4lqj.html',
-# 'https://oneupload.to/embed-j6m7h772enf5.html',
-# 'https://oneupload.to/embed-ay14yb1f5auo.html',
-# 'https://oneupload.to/embed-wk22zauyuaaz.html',
-# 'https://oneupload.to/embed-qz3moxmg79qx.html',
-# 'https://oneupload.to/embed-hqdpugy43abe.html',
-# 'https://oneupload.to/embed-suyl3zq98hd5.html',
-# 'https://oneupload.to/embed-ii1vo1bbbi9r.html',
-# 'https://oneupload.to/embed-uct0znyj6zfl.html',
-
-# ];
-
 # Each var epsX corresponds to a different link source (Sibnet, Oneupload, etc.)
 # Each links in the array corresponds to an episode in order (Episode 1, Episode 2, etc.)
 
