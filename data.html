@@ -1,0 +1,838 @@
+MongoDB connection successful
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <!-- prérequis -->
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+  <meta content="index, nofollow" name="robots"/>
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QK64GJ58E9">
+  </script>
+  <script>
+   window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QK64GJ58E9');
+  </script>
+  <!-- mini icone onglets -->
+  <link href="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_icon.png" rel="shortcut icon" type="image/png"/>
+  <link href="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_icon.png" rel="shortcut icon" sizes="192x192"/>
+  <link href="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_icon.png" rel="apple-touch-icon"/>
+  <!-- Sources CSS Local -->
+  <link href="/css/output_min.css?v=1.5" rel="stylesheet"/>
+  <link href="/css/default3.css?v=1.5" rel="stylesheet"/>
+  <!-- Source jQuery Local -->
+  <script src="/node_modules/jquery/dist/jquery.min.js">
+  </script>
+  <!-- Source JS Local -->
+  <script src="/js/defaut/script_defaut_v5.js" type="text/javascript">
+  </script>
+  <!-- (OBLIGAOIRE LOI RGPD EUROPEENNES) InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <script async="true" type="text/javascript">
+   (function() {
+var host = window.location.hostname;
+var element = document.createElement('script');
+var firstScript = document.getElementsByTagName('script')[0];
+var url = 'https://cmp.inmobi.com'
+	.concat('/choice/', 'n5-DbqbxTAvSJ', '/', host, '/choice.js?tag_version=V3');
+var uspTries = 0;
+var uspTriesLimit = 3;
+element.async = true;
+element.type = 'text/javascript';
+element.src = url;
+
+firstScript.parentNode.insertBefore(element, firstScript);
+
+function makeStub() {
+	var TCF_LOCATOR_NAME = '__tcfapiLocator';
+	var queue = [];
+	var win = window;
+	var cmpFrame;
+
+	function addFrame() {
+	var doc = win.document;
+	var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+	if (!otherCMP) {
+		if (doc.body) {
+		var iframe = doc.createElement('iframe');
+
+		iframe.style.cssText = 'display:none';
+		iframe.name = TCF_LOCATOR_NAME;
+		doc.body.appendChild(iframe);
+		} else {
+		setTimeout(addFrame, 5);
+		}
+	}
+	return !otherCMP;
+	}
+
+	function tcfAPIHandler() {
+	var gdprApplies;
+	var args = arguments;
+
+	if (!args.length) {
+		return queue;
+	} else if (args[0] === 'setGdprApplies') {
+		if (
+		args.length > 3 &&
+		args[2] === 2 &&
+		typeof args[3] === 'boolean'
+		) {
+		gdprApplies = args[3];
+		if (typeof args[2] === 'function') {
+			args[2]('set', true);
+		}
+		}
+	} else if (args[0] === 'ping') {
+		var retr = {
+		gdprApplies: gdprApplies,
+		cmpLoaded: false,
+		cmpStatus: 'stub'
+		};
+
+		if (typeof args[2] === 'function') {
+		args[2](retr);
+		}
+	} else {
+		if(args[0] === 'init' && typeof args[3] === 'object') {
+		args[3] = Object.assign(args[3], { tag_version: 'V3' });
+		}
+		queue.push(args);
+	}
+	}
+
+	function postMessageEventHandler(event) {
+	var msgIsString = typeof event.data === 'string';
+	var json = {};
+
+	try {
+		if (msgIsString) {
+		json = JSON.parse(event.data);
+		} else {
+		json = event.data;
+		}
+	} catch (ignore) {}
+
+	var payload = json.__tcfapiCall;
+
+	if (payload) {
+		window.__tcfapi(
+		payload.command,
+		payload.version,
+		function(retValue, success) {
+			var returnMsg = {
+			__tcfapiReturn: {
+				returnValue: retValue,
+				success: success,
+				callId: payload.callId
+			}
+			};
+			if (msgIsString) {
+			returnMsg = JSON.stringify(returnMsg);
+			}
+			if (event && event.source && event.source.postMessage) {
+			event.source.postMessage(returnMsg, '*');
+			}
+		},
+		payload.parameter
+		);
+	}
+	}
+
+	while (win) {
+	try {
+		if (win.frames[TCF_LOCATOR_NAME]) {
+		cmpFrame = win;
+		break;
+		}
+	} catch (ignore) {}
+
+	if (win === window.top) {
+		break;
+	}
+	win = win.parent;
+	}
+	if (!cmpFrame) {
+	addFrame();
+	win.__tcfapi = tcfAPIHandler;
+	win.addEventListener('message', postMessageEventHandler, false);
+	}
+};
+
+makeStub();
+
+var uspStubFunction = function() {
+	var arg = arguments;
+	if (typeof window.__uspapi !== uspStubFunction) {
+	setTimeout(function() {
+		if (typeof window.__uspapi !== 'undefined') {
+		window.__uspapi.apply(window.__uspapi, arg);
+		}
+	}, 500);
+	}
+};
+
+var checkIfUspIsReady = function() {
+	uspTries++;
+	if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+	console.warn('USP is not accessible');
+	} else {
+	clearInterval(uspInterval);
+	}
+};
+
+if (typeof window.__uspapi === 'undefined') {
+	window.__uspapi = uspStubFunction;
+	var uspInterval = setInterval(checkIfUspIsReady, 6000);
+}
+})();
+  </script>
+  <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+  <!-- Adcash -->
+  <script id="aclib" src="//acscdn.com/script/aclib.js" type="text/javascript">
+  </script>
+  <!-- Autotag Adcash (anti adblock) -->
+  <!--<script type="text/javascript" src="/z-q7kjfluml8"></script>-->
+  <!-- NAV BAR (fixed z-50)-->
+  <nav class="border-b-2 border-sky-900 mx-auto inset-x-0 top-0 flex" style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0.9624935535902388) 100%, rgba(0,0,0,0.9596845648261938) 100%);">
+   <!-- Barres pour menu mobile -->
+   <button alt="Menu mobile" class="block lg:hidden navbar-burger text-slate-200 hover:text-sky-500 transition-all duration-200 flex items-center ml-3 mr-auto">
+    <svg class="block h-6 w-6 fill-current" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+     <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z">
+     </path>
+    </svg>
+   </button>
+   <!-- searchbar sur mobile -->
+   <a class="flex uppercase block mr-3 lg:hidden bg-black transition-all duration-200">
+    <svg class="h-6 w-6 mt-3.5 m-3 text-center text-base text-white" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+     <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z">
+     </path>
+     <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" fill-rule="evenodd">
+     </path>
+    </svg>
+    <input autocomplete="off" class="search_text w-40 border-0 placeholder-opacity-40 placeholder-slate-200 uppercase text-white text-sm font-extrabold bg-black focus:outline-none transition-all duration-200" id="search_text" name="q" placeholder="Rechercher..." type="search"/>
+    <div class="result bg-black bg-opacity-90 absolute mt-14 w-52 h-auto rounded shadow-lg shadow-black border-1 border-white border-opacity-50" id="result" style="z-index:999;">
+    </div>
+   </a>
+   <!-- logos (pc & mobile) -->
+   <a class="flex m-2 font-extrabold uppercase text-slate-200 hover:text-sky-500 transition-all duration-200" href="/">
+    <img alt="Logo AS Banniere" class="h-9 hidden lg:block object-cover object-right hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_banniere.png"/>
+    <img alt="Logo AS" class="h-9 pr-2 block lg:hidden object-cover object-right hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo.png"/>
+   </a>
+   <a href="https://www.paypal.com/donate/?hosted_button_id=3FBNLMGT3JAJ2">
+    <img alt="Drapeau Pal" class="h-6 mt-4 md:h-7 pr-2 md:mt-3.5 object-cover object-right hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_pal.png"/>
+   </a>
+   <!-- réseaux navbar -->
+   <div class="inline-flex hidden lg:block text-center mt-3 ml-2">
+    <a alt="X" class="inline-flex text-center text-white hover:brightness-50 transition-all duration-200" href="https://x.com/anime_samafr">
+     <svg class="w-5 h-5 m-2" fill="none" viewbox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg">
+      <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white">
+      </path>
+     </svg>
+    </a>
+    <!--<a href="https://discord.gg/QNVxs7JYXb" class="inline-flex text-center text-white hover:brightness-50 transition-all duration-200" alt="Discord">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-5 h-5 m-2"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg>
+		</a>-->
+   </div>
+   <div class="flex hidden lg:block ml-auto text-lg">
+    <!-- searchbar sur pc -->
+    <a class="inline-flex bg-black transition-all duration-200">
+     <svg class="h-7 w-7 m-3 mt-3.5 text-base font-extrabold text-white" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z">
+      </path>
+      <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z" fill-rule="evenodd">
+      </path>
+     </svg>
+     <input autocomplete="off" class="search_text border-0 placeholder-opacity-50 placeholder-slate-200 uppercase text-base font-extrabold bg-black text-white focus:outline-none transition-all duration-200" id="search_text" name="q" placeholder="Rechercher..." type="search"/>
+     <div class="result bg-black bg-opacity-90 absolute mt-14 w-72 h-auto rounded shadow-lg shadow-black border-1 border-white border-opacity-50" id="result" style="z-index:999;">
+     </div>
+    </a>
+    <!-- catalogue -->
+    <a class="inline-flex uppercase text-base font-extrabold text-white hover:text-sky-500 hover:bg-gray-700 transition-all duration-200" href="/catalogue">
+     <svg class="h-7 w-7 my-3.5 mx-3 xl:mr-0" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+      </path>
+     </svg>
+     <p class="hidden xl:block p-3 m-1">
+      catalogue
+     </p>
+    </a>
+    <!-- planning -->
+    <a class="inline-flex uppercase text-base font-extrabold text-white hover:text-sky-500 hover:bg-gray-700 transition-all duration-200" href="/planning">
+     <svg class="h-7 w-7 my-3.5 mx-3 xl:mr-0" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z">
+      </path>
+      <path clip-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" fill-rule="evenodd">
+      </path>
+     </svg>
+     <p class="hidden xl:block p-3 m-1">
+      planning
+     </p>
+    </a>
+    <!-- page aide -->
+    <a class="inline-flex uppercase text-base font-extrabold text-white hover:text-sky-500 hover:bg-gray-700 transition-all duration-200" href="/aide">
+     <svg class="h-7 w-7 my-3.5 mx-3 xl:mr-0" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 01-.517.608 7.45 7.45 0 00-.478.198.798.798 0 01-.796-.064l-.453-.324a1.875 1.875 0 00-2.416.2l-.243.243a1.875 1.875 0 00-.2 2.416l.324.453a.798.798 0 01.064.796 7.448 7.448 0 00-.198.478.798.798 0 01-.608.517l-.55.092a1.875 1.875 0 00-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 01-.064.796l-.324.453a1.875 1.875 0 00.2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 01.796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 01.517-.608 7.52 7.52 0 00.478-.198.798.798 0 01.796.064l.453.324a1.875 1.875 0 002.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 01-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 001.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 01-.608-.517 7.507 7.507 0 00-.198-.478.798.798 0 01.064-.796l.324-.453a1.875 1.875 0 00-.2-2.416l-.243-.243a1.875 1.875 0 00-2.416-.2l-.453.324a.798.798 0 01-.796.064 7.462 7.462 0 00-.478-.198.798.798 0 01-.517-.608l-.091-.55a1.875 1.875 0 00-1.85-1.566h-.344zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" fill-rule="evenodd">
+      </path>
+     </svg>
+     <p class="hidden xl:block p-3 m-1">
+      aide
+     </p>
+    </a>
+    <!-- profil -->
+    <a class="inline-flex uppercase text-base font-extrabold text-white hover:text-sky-500 hover:bg-gray-700 transition-all duration-200" href="/profil">
+     <svg class="h-7 w-7 my-3.5 mx-3 xl:mr-0" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" fill-rule="evenodd">
+      </path>
+     </svg>
+     <p class="hidden xl:block p-3 m-1">
+      profil
+     </p>
+    </a>
+   </div>
+  </nav>
+  <!-- MENU GAUCHE -->
+  <div class="navbar-menu relative z-50 hidden">
+   <div class="navbar-backdrop fixed inset-0 bg-neutral-900 opacity-75">
+   </div>
+   <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 overflow-y-auto" style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0.951257598534059) 100%, rgba(0,0,0,0.8810328794329354) 100%);">
+    <div class="flex items-center mb-8 border-b-2 border-sky-900">
+     <a class="font-extrabold mt-2 mr-auto uppercase text-slate-200 hover:text-sky-500 hover:border-sky-500 transition-all duration-200" href="/">
+      <img alt="Logo AS Banniere" class="h-9 object-cover mr-auto mb-2 hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_banniere.png"/>
+     </a>
+     <button class="navbar-close">
+      <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-sky-700 transition-all duration-200" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+       </path>
+      </svg>
+     </button>
+    </div>
+    <!-- ancienne barre search ici -->
+    <div>
+     <ul>
+      <li class="mb-1">
+       <a class="flex p-2 text-sm font-bold text-white hover:bg-gray-700 hover:text-sky-400 rounded" href="/catalogue">
+        <svg class="h-7 w-7 my-3.5 ml-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+         <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z">
+         </path>
+        </svg>
+        <p class="p-5 pt-4.5 uppercase">
+         catalogue
+        </p>
+       </a>
+      </li>
+      <li class="mb-1">
+       <a class="flex p-2 text-sm font-bold text-white hover:bg-gray-700 hover:text-sky-400 rounded" href="/planning">
+        <svg class="h-7 w-7 my-3.5 ml-2" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M12.75 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM7.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM8.25 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM9.75 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM10.5 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM12.75 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM14.25 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 17.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 15.75a.75.75 0 100-1.5.75.75 0 000 1.5zM15 12.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM16.5 13.5a.75.75 0 100-1.5.75.75 0 000 1.5z">
+         </path>
+         <path clip-rule="evenodd" d="M6.75 2.25A.75.75 0 017.5 3v1.5h9V3A.75.75 0 0118 3v1.5h.75a3 3 0 013 3v11.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V7.5a3 3 0 013-3H6V3a.75.75 0 01.75-.75zm13.5 9a1.5 1.5 0 00-1.5-1.5H5.25a1.5 1.5 0 00-1.5 1.5v7.5a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5v-7.5z" fill-rule="evenodd">
+         </path>
+        </svg>
+        <p class="p-5 pt-4.5 uppercase">
+         planning
+        </p>
+       </a>
+      </li>
+      <li class="mb-1">
+       <a class="flex p-2 text-sm font-bold text-white hover:bg-gray-700 hover:text-sky-400 rounded" href="/aide">
+        <svg class="h-7 w-7 my-3.5 ml-2" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path clip-rule="evenodd" d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 01-.517.608 7.45 7.45 0 00-.478.198.798.798 0 01-.796-.064l-.453-.324a1.875 1.875 0 00-2.416.2l-.243.243a1.875 1.875 0 00-.2 2.416l.324.453a.798.798 0 01.064.796 7.448 7.448 0 00-.198.478.798.798 0 01-.608.517l-.55.092a1.875 1.875 0 00-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 01-.064.796l-.324.453a1.875 1.875 0 00.2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 01.796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 01.517-.608 7.52 7.52 0 00.478-.198.798.798 0 01.796.064l.453.324a1.875 1.875 0 002.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 01-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 001.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 01-.608-.517 7.507 7.507 0 00-.198-.478.798.798 0 01.064-.796l.324-.453a1.875 1.875 0 00-.2-2.416l-.243-.243a1.875 1.875 0 00-2.416-.2l-.453.324a.798.798 0 01-.796.064 7.462 7.462 0 00-.478-.198.798.798 0 01-.517-.608l-.091-.55a1.875 1.875 0 00-1.85-1.566h-.344zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" fill-rule="evenodd">
+         </path>
+        </svg>
+        <p class="p-5 pt-4.5 uppercase">
+         page aide
+        </p>
+       </a>
+      </li>
+      <li class="mb-1">
+       <a class="flex p-2 text-sm font-bold text-white hover:bg-gray-700 hover:text-sky-400 rounded" href="/profil">
+        <svg class="h-7 w-7 my-3.5 ml-2" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+         <path clip-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" fill-rule="evenodd">
+         </path>
+        </svg>
+        <p class="p-5 pt-4.5 uppercase">
+         profil
+        </p>
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div class="mt-auto">
+     <!-- reseaux -->
+     <div class="flex flex-wrap justify-center">
+      <a alt="X" class="inline-flex text-center text-white hover:brightness-50 transition-all duration-200" href="https://x.com/anime_samafr">
+       <svg class="w-5 h-5 m-2" fill="none" viewbox="0 0 1200 1227" xmlns="http://www.w3.org/2000/svg">
+        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="white">
+        </path>
+       </svg>
+      </a>
+      <!--<a href="https://discord.gg/QNVxs7JYXb" class="text-center text-white hover:brightness-50 transition-all duration-200 px-2" alt="Discord">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-5 h-5 m-2"><path fill="currentColor" d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/></svg>
+				</a>-->
+     </div>
+     <p class="my-4 text-xs text-center text-gray-400 font-bold">
+      © 2025 Anime-Sama - Tous droits réservés.
+     </p>
+    </div>
+   </nav>
+  </div>
+  <!-- bouton to top 
+<button style="z-index:300;" onclick="topFunction();" id="topBtn" class="bg-slate-200 fixed bottom-0 right-0 opacity-30 hover:opacity-100 cursor-pointer rounded p-2 m-7 transition-all duration-200">
+	<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" viewBox="0 0 20 20" fill="currentColor">
+		<path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+	</svg>
+</button>-->
+  <!-- bouton to top -->
+  <!-- wrapper du bouton avec SVG de suivi -->
+  <div class="fixed bottom-0 right-0 m-7 z-50 pointer-events-none" id="scrollProgressWrapper">
+   <svg class="absolute top-0 left-0 z-10" height="60" id="scrollProgressSvg" style="opacity: 1; transition: opacity 0.3s ease; pointer-events: none;" viewbox="0 0 60 60" width="60">
+    <circle cx="30" cy="30" fill="none" r="26" stroke="#0c4a6e" stroke-linecap="round" stroke-width="4">
+    </circle>
+   </svg>
+   <button class="pointer-events-auto bg-slate-200 rounded-full p-2 w-12 h-12 flex items-center justify-center opacity-30 hover:opacity-60 transition-all duration-200 z-20 relative" id="topBtn" onclick="topFunction()">
+    <svg class="h-6 w-6 text-black" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+     <path clip-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" fill-rule="evenodd">
+     </path>
+    </svg>
+   </button>
+  </div>
+  <meta content="Demon Slayer, Kimetsu no Yaiba, KNY, Saison 1, Saison 2, Saison 3, Saison 4, Saison 5, Saison 6, Saison 7, Saison 8, Saison 9, Saison 10, Film, OAV, VOSTFR, VF, Scans, anime-sama, anime, scan, anime sama, vostfr, vf, streaming, streaming vostfr, streaming vf, sans pubs, streaming sans pubs, streaming scan" name="keywords"/>
+  <meta content="https://cdn.statically.io/gh/Anime-Sama/IMG/img/contenu/demon-slayer.jpg" property="og:image">
+   <meta content="800" property="og:image:width"/>
+   <meta content="450" property="og:image:height"/>
+   <meta content="image/jpeg" property="og:image:type">
+    <meta content="Demon Slayer - Saison 1 | Anime-Sama - Streaming et catalogage d'animes et scans." name="description"/>
+    <title>
+     Demon Slayer - Saison 1 | Anime-Sama - Streaming et catalogage d'animes et scans.
+    </title>
+    <script>
+     $(document).ready(function(){$("#avOeuvre").html("Saison 1");});
+    </script>
+    <link href="https://anime-sama.fr/" rel="canonical">
+    </link>
+   </meta>
+  </meta>
+ </head>
+ <body>
+  <!-- LEFT GRID + CONTENU + RIGHT GRID -->
+  <div class="grid grid-cols-6 pb-16" id="blocEntier">
+   <!-- LEFT GRID -->
+   <!-- don't block this whole div block the one under don't be stupid thank you -->
+   <div class="hidden lg:block m-10 mt-0 scale-75" id="sousBlocLeft">
+    <!-- block this div -->
+    <div id="bannLeft">
+     <!-- Instant Gaming : Left banner -->
+     <!--<a target="_blank" href="https://www.instant-gaming.com/fr/giveaway/animesama"><img src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/concours_banner.png" alt="IG Left"></a>-->
+     <!-- Adcash : Left banner -->
+     <div>
+      <script type="text/javascript">
+       aclib.runBanner({zoneId: '8653010',});
+      </script>
+     </div>
+     <!-- onclicka : Left banner -->
+     <!--<script async src="https://js.onclckmn.com/static/onclicka.js" data-admpid="374959"></script>
+		<div data-banner-id="6091759"></div>-->
+    </div>
+   </div>
+   <!-- CONTENU MILIEU -->
+   <div class="col-span-6 mx-3 lg:col-span-4 lg:mx-0 mt-6 z-20" id="sousBlocMiddle">
+    <!-- liste épisodes -->
+    <script defer="" src="episodes.js?filever=6077" type="text/javascript">
+    </script>
+    <!-- script vidéo -->
+    <script defer="" src="../../../../js/contenu/script_videos.js?filever=14844" type="text/javascript">
+    </script>
+    <div class="mx-3 md:mx-10 mb-3">
+     <a class="hover:opacity-60 text-white hover:text-sky-400 hover:text-opacity-100 transition-all duration-200" href="../../">
+      <img alt="Demon Slayer" class="object-cover h-20 opacity-80 w-full border-opacity-50 rounded" id="imgOeuvre" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/contenu/demon-slayer.jpg"/>
+      <h3 class="text-2xl md:text-4xl uppercase font-bold" id="titreOeuvre">
+       Demon Slayer
+      </h3>
+     </a>
+     <h2 class="text-xl md:text-2xl uppercase text-gray-600 font-bold" id="avOeuvre">
+     </h2>
+     <!-- LANGUES Switch -->
+     <div class="flex flex-wrap justify-start mb-5">
+      <!-- button VOSTFR (DRAPEAU JAPONAIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vostfr" id="switchVOSTFR">
+       <img alt="Drapeau Japonais" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_jp.png">
+        <p class="absolute">
+         VO
+        </p>
+       </img>
+      </a>
+      <!-- button VF (DRAPEAU FRANCAIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vf" id="switchVF">
+       <img alt="Drapeau Français" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png"/>
+       <p class="absolute">
+        VF
+       </p>
+      </a>
+      <!-- button VA (DRAPEAU ANGLAIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../va" id="switchVA">
+       <img alt="Drapeau Anglais" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_en.png"/>
+       <p class="absolute">
+        VA
+       </p>
+      </a>
+      <!-- button VAR (DRAPEAU ARABE) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../var" id="switchVAR">
+       <img alt="Drapeau Arabe" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_ar.png"/>
+       <p class="absolute">
+        VAR
+       </p>
+      </a>
+      <!-- button VKR (DRAPEAU COREEN) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vkr" id="switchVKR">
+       <img alt="Drapeau Coréen" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_kr.png"/>
+       <p class="absolute">
+        VKR
+       </p>
+      </a>
+      <!-- button VCN (DRAPEAU CHINOIS) -->
+      <a class="flex hidden undefined bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200 opacity-100" href="../vcn" id="switchVCN">
+       <img alt="Drapeau Chinois" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_cn.png"/>
+       <p class="absolute">
+        VCN
+       </p>
+      </a>
+      <!-- button VQC (DRAPEAU QUEBECOIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vqc" id="switchVQC">
+       <img alt="Drapeau Québécois" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_qc.png"/>
+       <p class="absolute">
+        VQC
+       </p>
+      </a>
+      <!-- button VF1 (DRAPEAU FRANCAIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vf1" id="switchVF1">
+       <img alt="Drapeau Français" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png"/>
+       <p class="absolute">
+        VF1
+       </p>
+      </a>
+      <!-- button VF2 (DRAPEAU FRANCAIS) -->
+      <a class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200" href="../vf2" id="switchVF2">
+       <img alt="Drapeau Français" class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png"/>
+       <p class="absolute">
+        VF2
+       </p>
+      </a>
+      <!-- template
+		<-- button VOSTFR (DRAPEAU X) ->
+		<a href="../vostfr" id="switchVOSTFR" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_X.png" alt="Drapeau X"/>
+			<p class="absolute">VO</p>
+		</a>
+
+		<-- button VJ (DRAPEAU JAPONAIS) ->
+		<a href="../vj" id="switchVJ" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_jp.png" alt="Drapeau Japonais"/>
+			<p class="absolute">VJ</p>
+		</a>
+		<-- button VF (DRAPEAU FRANCAIS) ->
+		<a href="../vf" id="switchVF" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png" alt="Drapeau Français"/>
+			<p class="absolute">VF</p>
+		</a>
+		<-- button VA (DRAPEAU ANGLAIS) ->
+		<a href="../va" id="switchVA" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_en.png" alt="Drapeau Anglais"/>
+			<p class="absolute">VA</p>
+		</a>
+		<-- button VKR (DRAPEAU COREEN) ->
+		<a href="../vkr" id="switchVKR" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_kr.png" alt="Drapeau Coréen"/>
+			<p class="absolute">VKR</p>
+		</a>
+		<-- button VCN (DRAPEAU CHINOIS) ->
+		<a href="../vcn" id="switchVCN" class="flex undefined bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200 opacity-100">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_cn.png" alt="Drapeau Chinois"/>
+			<p class="absolute">VCN</p>
+		</a>
+		<-- button VQC (DRAPEAU QUEBECOIS) ->
+		<a href="../vqc" id="switchVQC" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_qc.png" alt="Drapeau Québécois"/>
+			<p class="absolute">VQC</p>
+		</a>
+		<-- button VF1 (DRAPEAU FRANCAIS) ->
+		<a href="../vf1" id="switchVF1" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png" alt="Drapeau Français"/>
+			<p class="absolute">VF1</p>
+		</a>
+		<-- button VF2 (DRAPEAU FRANCAIS) ->
+		<a href="../vf2" id="switchVF2" class="flex hidden undefined opacity-20 hover:opacity-100 bg-white rounded uppercase font-bold text-base items-center justify-center outline outline-gray-500 outline-1 mr-2 my-2 sm:ml-2 transition-all duration-200">
+			<img class="object-cover rounded h-8 w-11" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/flag_fr.png" alt="Drapeau Français"/>
+			<p class="absolute">VF2</p>
+		</a>
+		-->
+     </div>
+     <p class="text-gray-300 text-sm md:text-base font-medium mt-5 sm:ml-2" id="messagePage">
+     </p>
+     <!-- Selects et signalement -->
+     <div class="flex flex-wrap justify-start bg-slate-900 bg-opacity-70 rounded">
+      <!-- select épisodes -->
+      <select class="scrollBarStyled bg-black outline outline-sky-700 outline-1 hover:opacity-80 rounded uppercase font-semibold text-sm sm:text-base text-white items-center cursor-pointer py-1 pl-3 pr-7 sm:pr-10 my-2 mx-1 sm:m-2 transition-all duration-200" id="selectEpisodes" onchange="selectEpisode();" ondblclick="createInputField();" ontouchstart="handleTouchStart(event);">
+      </select>
+      <!-- select lecteurs -->
+      <select class="scrollBarStyled bg-black outline outline-sky-700 outline-1 hover:opacity-80 rounded uppercase font-semibold text-sm sm:text-base text-white items-center cursor-pointer py-1 pl-3 pr-7 sm:pr-10 mx-1 m-2 transition-all duration-200" id="selectLecteurs" onchange="selectLecteur();">
+      </select>
+      <!-- Lecteur AS -->
+      <!--<button onclick="selectLecteurAS();" id="selectLecteursAS" class="flex bg-sky-900 opacity-40 hover:opacity-100 outline outline-black outline-2 rounded uppercase font-semibold text-sm sm:text-base text-white items-center cursor-pointer py-1 px-2 my-2 mx-1 sm:m-2 transition-all duration-200">
+		<p class="pr-1">Lecteur AS</p>
+		<img class="h-6 shrink-0 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/AS_border.png"/>
+	</button>-->
+     </div>
+     <!-- message dernier episode vu -->
+     <a class="text-white text-xs ml-2 lg:text-sm uppercase opacity-80" id="printLastEpisode">
+      <b>
+       Dernière sélection :
+      </b>
+      <i id="savedEpisodeId">
+      </i>
+     </a>
+     <!-- Navigation épisodes 1 -->
+     <div class="flex flex-wrap justify-center items-center mt-2 bg-slate-900 bg-opacity-70 rounded">
+      <!-- boutton épisode précédent -->
+      <button class="flex bg-sky-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 mr-5 my-2 transition-all duration-200" id="prevEpisode" onclick="prevEp();">
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:mr-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" fill-rule="evenodd">
+        </path>
+       </svg>
+       <p class="hidden md:block">
+        Precedent
+       </p>
+      </button>
+      <!-- boutton dernier épisode -->
+      <button class="flex bg-stone-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 mr-5 my-2 transition-all duration-200" id="lastEpisode" onclick="lastEp();">
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:mr-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" fill-rule="evenodd">
+        </path>
+       </svg>
+       <p class="hidden md:block">
+        Dernier episode
+       </p>
+      </button>
+      <!-- boutton épisode suivant -->
+      <button class="flex bg-sky-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 my-2 transition-all duration-200" id="nextEpisode" onclick="nextEp();">
+       <p class="hidden md:block">
+        Suivant
+       </p>
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:ml-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" fill-rule="evenodd">
+        </path>
+       </svg>
+      </button>
+     </div>
+     <!---------------------- +VIDEO --------------------------->
+     <!-- un probleme ? -->
+     <!--<p class="text-white text-center text-xs mt-2 lg:text-sm italic">Un problème sur la vidéo ? <i class="font-bold not-italic">Changez de lecteur</i><a id="lecteurASDispoMsg"> (utilisez le <i class="text-sky-300">lecteur AS</i> de préférence)</a>.</p>-->
+     <p class="text-white text-center mt-2 italic">
+      Pub insistante ou vidéo indisponible ?
+      <i class="font-bold not-italic">
+       Changez de lecteur
+      </i>
+      .
+     </p>
+     <!--<p class="text-white text-center text-xs ml-2 lg:text-sm font-bold mb-1">/!\ LE LECTEUR AS EST EN MAINTENANCE POUR LE MOMENT. /!\</p>-->
+     <!-- vidéo -->
+     <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full z-600 h-64 mt-2 mb-76 overflow-hidden overflow-x-hidden overflow-y-hidden" id="playerDF" onload="this.onload=null;" src="">
+     </iframe>
+     <style>
+      @media screen and (min-width: 768px){#playerDF{height:480px;}}
+@media screen and (min-width: 2000px){#playerDF{height:720px;}}
+@media screen and (min-width: 2200px){#playerDF{height:900px;}}
+@media screen and (min-width: 2400px){#playerDF{height:1100px;}}
+     </style>
+     <!-- vidéo AS -->
+     <div class="z-500 mt-2 hidden" id="playerAS">
+      <link href="https://cdn.plyr.io/3.7.2/plyr.css" rel="stylesheet">
+       <script src="https://cdn.plyr.io/3.7.2/plyr.js">
+       </script>
+       <video class="video js-player" controls="" id="playerASvid" playsinline="" ref="video">
+        <source id="playerASsrc" src="" type="video/mp4"/>
+       </video>
+       <!-- Commandes custom pour le player -->
+       <script>
+        document.addEventListener('DOMContentLoaded', () => {
+		const controls = [
+			'play-large', // The large play button in the center
+			'rewind', // Rewind by the seek time (default 10 seconds)
+			'play', // Play/pause playback
+			'fast-forward', // Fast forward by the seek time (default 10 seconds)
+			'progress', // The progress bar and scrubber for playback and buffering
+			'current-time', // The current time of playback
+			'duration', // The full duration of the media
+			'mute', // Toggle mute
+			'volume', // Volume control
+			'captions', // Toggle captions
+			'settings', // Settings menu
+			'pip', // Picture-in-picture (currently Safari only)
+			'airplay', // Airplay (currently Safari only)
+			'fullscreen' // Toggle fullscreen
+		];
+		const player = new Plyr('#playerASvid', { controls });
+	});
+       </script>
+      </link>
+     </div>
+     <!-- image erreur -->
+     <img class="hidden w-full object-cover" id="msgErrorEp" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/erreur_videos.jpg"/>
+     <!--
+<script>
+var frames = document.getElementsByTagName('iframe');
+for (var frame of frames) {
+	frame.setAttribute("sandbox", "allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-top-navigation allow-forms");
+}
+</script>-->
+     <!---------------------- -VIDEO --------------------------->
+     <!-- Navigation épisodes 2 -->
+     <div class="flex flex-wrap justify-center items-center my-2 bg-slate-900 bg-opacity-70 rounded">
+      <!-- boutton épisode précédent -->
+      <button class="flex bg-sky-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 mr-5 my-2 transition-all duration-200" id="prevEpisode" onclick="prevEp();">
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:mr-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" fill-rule="evenodd">
+        </path>
+       </svg>
+       <p class="hidden md:block">
+        Precedent
+       </p>
+      </button>
+      <!-- boutton dernier épisode -->
+      <button class="flex bg-stone-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 mr-5 my-2 transition-all duration-200" id="lastEpisode" onclick="lastEp();">
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:mr-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" fill-rule="evenodd">
+        </path>
+       </svg>
+       <p class="hidden md:block">
+        Dernier episode
+       </p>
+      </button>
+      <!-- boutton épisode suivant -->
+      <button class="flex bg-sky-900 hover:opacity-80 rounded uppercase font-semibold text-white justify-center items-center cursor-pointer outline outline-gray-500 outline-1 py-1 p-3 my-2 transition-all duration-200" id="nextEpisode" onclick="nextEp();">
+       <p class="hidden md:block">
+        Suivant
+       </p>
+       <svg class="h-7 w-7 md:h-5 md:w-5 md:ml-3" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" fill-rule="evenodd">
+        </path>
+       </svg>
+      </button>
+     </div>
+     <script>
+      $(document).ready(function(){
+		//check si episode existe
+		if(typeof eps1 === 'undefined'){$('#msgErrorEp').show();$('#playerDF').hide();}
+		resetListe();
+		finirListe(1);
+		$('#avOeuvre').html();
+	});
+     </script>
+    </div>
+    <p class="text-sm text-white text-center font-medium opacity-50 mt-32 pb-2">
+     Cliquer sur une pub est le meilleur moyen de nous soutenir.
+    </p>
+    <!-- BOTTOM -->
+    <div class="flex flex-col items-center justify-center">
+     <!-- Banners -->
+     <div class="flex pt-5 items-center justify-center" id="bannBot">
+      <!-- Adcash : Bottom banner -->
+      <!--<div><script type="text/javascript">aclib.runBanner({zoneId: '8653014',});</script></div>-->
+     </div>
+     <!-- Squares -->
+     <!-- <div id="squBot" class="pt-1 scale-75 sm:inline-flex"> -->
+     <div class="sm:inline-flex pt-1 items-center justify-center" id="squBot">
+      <!-- Monetag : Bottom square -->
+      <script async="" data-category="common" data-cfasync="false" data-id="dl-banner-300x250" data-size="300x250" data-zone="7809940" src="//lowseelor.com/btag.min.js">
+      </script>
+      <!--anime <script async data-cfasync="false" data-size="300x250" data-category="anime" data-id="dl-banner-300x250" data-zone="7809940" src="//uchaihoo.com/btag.min.js"></script>-->
+      <!-- Adcash : Bottom square -->
+      <!--<div><script type="text/javascript">aclib.runBanner({zoneId: '8653002',});</script></div>-->
+     </div>
+    </div>
+   </div>
+   <!-- RIGHT GRID -->
+   <!-- don't block this whole div block the one under don't be stupid thank you -->
+   <div class="hidden lg:block m-10 mt-0 scale-75" id="sousBlocRight">
+    <!-- block this div -->
+    <div id="bannRight">
+     <!-- Instant Gaming : Right banner -->
+     <!--<a target="_blank" href="https://www.instant-gaming.com/fr/giveaway/animesama"><img src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/concours_banner.png" alt="IG Right"></a>-->
+     <!-- Adcash : Right banner -->
+     <div>
+      <script type="text/javascript">
+       aclib.runBanner({zoneId: '8653006',});
+      </script>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   $(document).ready(function(){
+			/*
+			resetListe(); toujours au debut en premier
+			creerListe(debut, fin);newSP(special); on en met autant qu'on veut
+			creerListe(debut, fin);newSP(special); on en met autant qu'on veut
+			finirListe(debut de la fin);
+			*/
+		});
+  </script>
+ </body>
+ <footer>
+  <footer class="p-4 sm:p-6 border-t-2 border-sky-900" style="background: rgb(0,0,0);background: linear-gradient(90deg, rgba(0,0,0,0.9624935535902388) 100%, rgba(0,0,0,0.9596845648261938) 100%);">
+   <div class="grid grid-cols-3 md:grid-cols-5 text-xs md:text-sm">
+    <div class="md:ml-6">
+     <h3 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
+      Qui sommes-nous
+     </h3>
+     <ul>
+      <li class="mb-4 text-gray-400 font-semibold">
+       Anime-Sama est un site de référencement et de catalogage avec le moins de publicités dérangeantes possibles, créé par des passionnés de l’animation et du divertissement APAC.
+      </li>
+     </ul>
+    </div>
+    <div class="ml-3 md:ml-16">
+     <a href="https://anime-sama.org/aide/#dmca">
+      <h3 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
+       DMCA
+      </h3>
+     </a>
+     <ul>
+      <li class="mb-4 text-gray-400 font-semibold">
+       Anime-Sama n'héberge aucune vidéo sur son serveur. Contactez directement la plateforme d'hébergement vidéo pour toutes réclamations de droits relatifs aux contenus en question.
+      </li>
+     </ul>
+    </div>
+    <!--<div class="ml-3 md:ml-20">
+			<h3 class="mb-6 font-semibold text-gray-900 uppercase dark:text-white">Contact</h3>
+			<ul>
+				<li class="mb-4">
+					<a href="https://discord.gg/anime-sama" target="_blank"
+						class="text-gray-600 hover:underline dark:text-gray-400 font-semibold">Discord</a>
+				</li>
+				<li class="mb-4">
+					<a href="https://x.com/Anime_samaFR" target="_blank"
+						class="text-gray-600 hover:underline dark:text-gray-400 font-semibold">X</a>
+				</li>
+			</ul>
+		</div>-->
+   </div>
+   <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
+   <div class="flex items-center justify-between">
+    <a href="https://anime-sama.org/">
+     <img alt="Logo AS bannière" class="h-9 hidden lg:block object-cover object-right hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo_banniere.png"/>
+     <img alt="Logo AS" class="h-9 block lg:hidden object-cover object-right hover:brightness-50 transition-all duration-200" src="https://cdn.statically.io/gh/Anime-Sama/IMG/img/autres/logo.png"/>
+    </a>
+    <span class="flex text-xs md:text-sm text-gray-500 font-bold sm:text-center dark:text-gray-400">
+     © 2025 Anime-Sama - Tous droits réservés.
+    </span>
+   </div>
+  </footer>
+ </footer>
+</html>
+
