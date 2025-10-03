@@ -69,6 +69,8 @@ for block in blocks:
                 continue
             # garder que les URLs valides
             if line.startswith("http"):
+                # Remplacer vidmoly.to par vidmoly.net
+                line = line.replace("https://vidmoly.to", "https://vidmoly.net")
                 all_links[current_key].append(line)
 
 # Export JSON propre
