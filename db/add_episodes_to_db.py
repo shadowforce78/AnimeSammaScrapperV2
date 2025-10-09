@@ -1,50 +1,49 @@
 import json
-from parser.episodes_parser import parse_all_anime_episodes
+from typing import List, Dict, Optional
+from db.connect import client
 
 
-def add_episodes_to_db(all_catalogue_items: list, save_to_file: str = "episodes_data.json"):
+def add_episodes_to_db(
+    episodes_data: List[Dict],
+    save_to_db: bool = True,
+    db_name: str = "AnimeSama",
+    collection_name: str = "episodes",
+) -> int:
     """
-    Parse and save all anime episodes from the catalogue
-    
+    Insert or update pre-parsed episodes data into MongoDB.
+
     Args:
-        all_catalogue_items: List of oeuvre dictionaries from data.json
-        save_to_file: Filename to save the episodes data
+        episodes_data: list of episode entries (each entry should contain at least 'title' and 'episodes')
+        save_to_db: whether to upsert the data into MongoDB
+        db_name: MongoDB database name
+        collection_name: MongoDB collection name
+
+    Returns:
+        Number of documents upserted (approximate)
     """
-    all_episodes_data = []
-    
-    # Filtrer seulement les oeuvres qui ont des animes disponibles
-    oeuvres_with_anime = [
-        item for item in all_catalogue_items 
-        if item.get("details", {}).get("anime_disponible")
-    ]
-    
-    for i, oeuvre in enumerate(oeuvres_with_anime, 1):
-        
-        episodes_data = parse_all_anime_episodes(oeuvre)
-        
-        if episodes_data:
-            oeuvre_episode_entry = {
-                "title": oeuvre.get("title"),
-                "link": oeuvre.get("link"),
-                "type": oeuvre.get("type"),
-                "episodes": episodes_data
-            }
-            all_episodes_data.append(oeuvre_episode_entry)
-    
-    # Sauvegarder dans un fichier JSON
-    with open(save_to_file, 'w', encoding='utf-8') as f:
-        json.dump(all_episodes_data, f, ensure_ascii=False, indent=2)
-    
-    # Statistiques
-    total_episodes = 0
-    total_sources = 0
-    
-    for entry in all_episodes_data:
-        for anime_name, sources in entry["episodes"].items():
-            total_sources += len(sources)
-            # Compter les épisodes du premier source
-            if sources:
-                first_source = list(sources.keys())[0]
-                total_episodes += len(sources[first_source])
-    
-    return all_episodes_data
+    if not isinstance(episodes_data, list):
+        raise ValueError("episodes_data must be a list of episode entries")
+
+    # Optionnel: sauvegarder dans un fichier
+
+    upsert_count = 0
+
+    if save_to_db and episodes_data:
+        db = client[db_name]
+        coll = db[collection_name]
+
+        for entry in episodes_data:
+            title = entry.get("title")
+            if not title:
+                continue
+            filter_ = {"title": title}
+            update = {"$set": entry}
+            result = coll.update_one(filter_, update, upsert=True)
+            # result.upserted_id is set when a new doc was inserted
+            if getattr(result, "upserted_id", None) is not None:
+                upsert_count += 1
+            else:
+                # If no upserted_id, it's an update; count it as well
+                upsert_count += 1
+
+    return upsert_count
