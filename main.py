@@ -3,6 +3,7 @@ from db.add_utils_to_db import add_utils_to_db
 from db.add_data_to_db import add_data_to_db
 from db.add_episodes_to_db import add_episodes_to_db
 from parser.catalogue_parser import parser_all_catalogue_pages
+from parser.scrape_episodes import scrape_all_episodes_from_catalogue
 import json
 import requests
 import bs4
@@ -19,8 +20,7 @@ from urllib.parse import quote
 #     all_catalogue_items = json.load(f)
 # add_data_to_db(all_catalogue_items) # Scraped ✅
 
-# Scrap every episodes 
-with open("episodes_data.json", "r", encoding="utf-8") as f:
-    all_episodes_data = json.load(f)
-episodes_data = add_episodes_to_db(all_episodes_data) # Scraped ✅
-
+# scrape_all_episodes_from_catalogue()  # This will create episodes_data.json
+# with open("episodes_data.json", "r", encoding="utf-8") as f:
+#     all_episodes_data = json.load(f)
+# episodes_data = add_episodes_to_db(all_episodes_data) # Scraped ✅
