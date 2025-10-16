@@ -1,4 +1,4 @@
-# from utils.catalogue import return_data, fetch_all_catalogue_pages
+from utils.catalogue import return_data, fetch_all_catalogue_pages
 from db.add_utils_to_db import add_utils_to_db
 from db.add_data_to_db import add_data_to_db
 from db.add_episodes_to_db import add_episodes_to_db
@@ -44,6 +44,6 @@ import json
 
 # Scrap all manga scans from manga_data.json
 # scrape_all_scans_from_manga_data()  # This will create scans_data.json
-# with open("scans_data.json", "r", encoding="utf-8") as f:
-#     all_scans_data = json.load(f)
-# add_scans_to_db(all_scans_data)  # Scraped ✅
+with open("scans_data.json", "r", encoding="utf-8") as f:
+    all_scans_data = json.load(f)
+add_scans_to_db(all_scans_data)  # Scraped ✅
