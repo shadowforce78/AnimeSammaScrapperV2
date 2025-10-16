@@ -25,7 +25,8 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
         if not titre_oeuvre_tag:
             return None
         
-        nom_oeuvre = titre_oeuvre_tag.text.strip()
+        # Strip all whitespace characters including non-breaking spaces
+        nom_oeuvre = titre_oeuvre_tag.get_text(strip=True)
         
         # Get metadata (chapters and number of images per chapter)
         url_metadata = f"https://anime-sama.fr/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
@@ -35,6 +36,11 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
             return None
         
         data = response.json()
+        
+        # Check if API returned an error
+        if "error" in data:
+            return None
+        
         all_chapters = [
             {"chapter": int(chap), "num_images": int(num)} 
             for chap, num in data.items()
