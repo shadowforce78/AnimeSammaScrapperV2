@@ -1,14 +1,16 @@
-from utils.catalogue import return_data, fetch_all_catalogue_pages
+# from utils.catalogue import return_data, fetch_all_catalogue_pages
 from db.add_utils_to_db import add_utils_to_db
 from db.add_data_to_db import add_data_to_db
 from db.add_episodes_to_db import add_episodes_to_db
 from parser.catalogue_parser import parser_all_catalogue_pages
 from parser.scrape_episodes import scrape_all_episodes_from_catalogue
+from parser.scans_parser import scrape_all_scans_from_links
 import json
 import requests
 import bs4
 import re
 from urllib.parse import quote
+
 # Scrap utils first (genres, languages, types from first page only)
 # add_utils_to_db(return_data()) # Scraped ✅
 
@@ -20,7 +22,38 @@ from urllib.parse import quote
 #     all_catalogue_items = json.load(f)
 # add_data_to_db(all_catalogue_items) # Scraped ✅
 
+# Scrap episodes next
 # scrape_all_episodes_from_catalogue()  # This will create episodes_data.json
 # with open("episodes_data.json", "r", encoding="utf-8") as f:
 #     all_episodes_data = json.load(f)
 # episodes_data = add_episodes_to_db(all_episodes_data) # Scraped ✅
+
+# Scrap scan next
+# with open("data.json", "r", encoding="utf-8") as f:
+#     all_catalogue_items = json.load(f)
+
+# urls = []
+# # Get manga disponible for each item with manga
+# for item in all_catalogue_items:
+#     if item.get("details", {}).get("manga_disponible"):
+#         manga_disponible = item["details"]["manga_disponible"]
+#         for manga in manga_disponible:
+#             full_url = f"https://anime-sama.fr/catalogue/{item['title'].lower().replace(' ', '-').replace('#', '')}/{manga['url']}"
+#             urls.append(full_url)
+
+# with open("manga_data.json", "w", encoding="utf-8") as f:
+#     # Put link in manga_data.json
+#     json.dump({"manga_links": urls}, f, ensure_ascii=False, indent=2)
+
+# Scrap all manga scans from manga_data.json
+with open("manga_data.json", "r", encoding="utf-8") as f:
+    manga_data = json.load(f)
+
+manga_links = manga_data.get("manga_links", [])
+
+# Scrape all scans
+all_scans_data = scrape_all_scans_from_links(manga_links)
+
+# Save to scans_data.json
+with open("scans_data.json", "w", encoding="utf-8") as f:
+    json.dump(all_scans_data, f, ensure_ascii=False, indent=2)
