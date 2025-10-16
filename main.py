@@ -2,14 +2,11 @@
 from db.add_utils_to_db import add_utils_to_db
 from db.add_data_to_db import add_data_to_db
 from db.add_episodes_to_db import add_episodes_to_db
+from db.add_scans_to_db import add_scans_to_db
 from parser.catalogue_parser import parser_all_catalogue_pages
 from parser.scrape_episodes import scrape_all_episodes_from_catalogue
-from parser.scans_parser import scrape_all_scans_from_links
+from parser.scrape_scans import scrape_all_scans_from_manga_data
 import json
-import requests
-import bs4
-import re
-from urllib.parse import quote
 
 # Scrap utils first (genres, languages, types from first page only)
 # add_utils_to_db(return_data()) # Scraped ✅
@@ -46,14 +43,7 @@ from urllib.parse import quote
 #     json.dump({"manga_links": urls}, f, ensure_ascii=False, indent=2)
 
 # Scrap all manga scans from manga_data.json
-with open("manga_data.json", "r", encoding="utf-8") as f:
-    manga_data = json.load(f)
-
-manga_links = manga_data.get("manga_links", [])
-
-# Scrape all scans
-all_scans_data = scrape_all_scans_from_links(manga_links)
-
-# Save to scans_data.json
-with open("scans_data.json", "w", encoding="utf-8") as f:
-    json.dump(all_scans_data, f, ensure_ascii=False, indent=2)
+# scrape_all_scans_from_manga_data()  # This will create scans_data.json
+# with open("scans_data.json", "r", encoding="utf-8") as f:
+#     all_scans_data = json.load(f)
+# add_scans_to_db(all_scans_data)  # Scraped ✅
