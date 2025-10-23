@@ -46,7 +46,7 @@ import json
 #     json.dump(manga_by_title, f, ensure_ascii=False, indent=2)
 
 # Scrap all manga scans from manga_data.json
-scrape_all_scans_from_manga_data()  # This will create scans_data.json
-with open("scans_data.json", "r", encoding="utf-8") as f:
-    scans_by_title = json.load(f)
-add_scans_to_db(scans_by_title)  # Scraped ✅
+# scrape_all_scans_from_manga_data()  # This will create scans_data.json
+# with open("scans_data.json", "r", encoding="utf-8") as f:
+#     all_scans_data = json.load(f)
+# add_scans_to_db(all_scans_data)  # Scraped ✅
