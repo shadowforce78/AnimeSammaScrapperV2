@@ -2,7 +2,11 @@ import requests
 import bs4
 from urllib.parse import quote
 from typing import Dict, List, Optional
+import os
+import dotenv
+dotenv.load_dotenv()
 
+BASE_URL=os.getenv("BASE_URL")
 
 def parse_scan_chapters(url: str) -> Optional[Dict]:
     """
@@ -29,7 +33,7 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
         nom_oeuvre = titre_oeuvre_tag.get_text()
         
         # Get metadata (chapters and number of images per chapter)
-        url_metadata = f"https://anime-sama.fr/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
+        url_metadata = f"{BASE_URL}/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
         response = requests.get(url_metadata, timeout=10)
         
         if not response.ok:
@@ -52,7 +56,7 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
             chapter_num = chapter_info["chapter"]
             num_images = chapter_info["num_images"]
             images = [
-                f"https://anime-sama.fr/s2/scans/{quote(nom_oeuvre)}/{chapter_num}/{i}.jpg" 
+                f"{BASE_URL}/s2/scans/{quote(nom_oeuvre)}/{chapter_num}/{i}.jpg" 
                 for i in range(1, num_images + 1)
             ]
             all_images.append({

@@ -1,6 +1,11 @@
 import json
 from parser.scans_parser import scrape_all_scans_from_links, parse_scan_chapters
 import re
+import os
+import dotenv
+
+dotenv.load_dotenv()
+BASE_URL=os.getenv("BASE_URL")
 
 
 def extract_scan_type_from_url(url: str) -> str:
@@ -61,7 +66,7 @@ def scrape_all_scans_from_manga_data(manga_data_path: str = 'manga_data.json', o
         # Only add entry if we have scans
         if scans_dict:
             # Build the catalogue link
-            catalogue_link = f"https://anime-sama.fr/catalogue/{anime_title.lower().replace(' ', '-').replace('#', '')}/"
+            catalogue_link = f"{BASE_URL}/catalogue/{anime_title.lower().replace(' ', '-').replace('#', '')}/"
             
             all_scans_data.append({
                 "title": anime_title,
