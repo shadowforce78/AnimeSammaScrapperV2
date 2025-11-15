@@ -1,6 +1,7 @@
-import requests
 import bs4
 from typing import Dict, Any, Optional
+
+from utils.scraper import fetch
 
 
 def parse_oeuvre_details(url: str) -> Optional[Dict[str, Any]]:
@@ -14,8 +15,7 @@ def parse_oeuvre_details(url: str) -> Optional[Dict[str, Any]]:
         Dictionary with detailed information or None if failed
     """
     try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
+        response = fetch(url)
         soup = bs4.BeautifulSoup(response.text, "html.parser")
         
         details = {}

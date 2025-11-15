@@ -13,23 +13,35 @@ def parse_catalogue_from_soup(soup, fetch_details=False):
     if not title_section:
         return []
     
-    items = title_section.find_all("div", class_="shrink-0 m-3 rounded border-2 border-gray-400 border-opacity-50 shadow-2xl shadow-black hover:shadow-zinc-900 hover:opacity-80 bg-black bg-opacity-40 transition-all duration-200 cursor-pointer")
+    # The site uses a number of tailwind classes which can change; match by
+    # the stable 'shrink-0' class and filter for cards with a link/image.
+    all_cards = title_section.find_all("div", class_="shrink-0")
+    items = [card for card in all_cards if card.find("a", href=True) and card.find("img", src=True)]
     parsed_items = []
     
     for item in items:
         link_tag = item.find("a", href=True)
         img_tag = item.find("img", src=True)
-        title_tag = item.find("h1", class_="text-white font-bold uppercase text-md line-clamp-2")
-        alt_title_tag = item.find("p", class_="text-white text-xs opacity-40 truncate italic")
-        
-        info_tags = item.find_all("p", class_="mt-0.5 text-gray-300 font-medium text-xs truncate")
+        # Some links on the site contain trailing spaces; normalize them
+        href = link_tag['href'].strip() if link_tag and link_tag.get('href') else None
+        img_src = img_tag['src'].strip() if img_tag and img_tag.get('src') else None
+
+        # Title is often in an h1/h2; class attribute can vary so fall back
+        title_tag = item.find(["h1", "h2", "h3"])  # site uses h2.card-title
+        alt_title_tag = (
+            item.find("p", class_="alternate-titles")
+            or item.find("p", class_="text-white text-xs opacity-40 truncate italic")
+            or item.find("p", class_="italic")
+        )
+
+        info_tags = item.find_all("p", class_="info-value") or item.find_all("p")
         genres_tag = info_tags[0] if len(info_tags) > 0 else None
         type_tag = info_tags[1] if len(info_tags) > 1 else None
         language_tag = info_tags[2] if len(info_tags) > 2 else None
 
         parsed_item = {
-            "link": link_tag['href'] if link_tag else None,
-            "image": img_tag['src'] if img_tag else None,
+            "link": href,
+            "image": img_src,
             "title": title_tag.text.strip() if title_tag else None,
             "alt_title": alt_title_tag.text.strip() if alt_title_tag else None,
             "genres": [genre.strip() for genre in genres_tag.text.split(',')] if genres_tag and genres_tag.text else [],

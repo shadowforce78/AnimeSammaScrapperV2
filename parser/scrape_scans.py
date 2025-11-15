@@ -1,17 +1,36 @@
 import json
-from parser.scans_parser import scrape_all_scans_from_links, parse_scan_chapters
 import re
 import os
+from pathlib import Path
+
 import dotenv
 
+from parser.scans_parser import parse_scan_chapters
+
 dotenv.load_dotenv()
-BASE_URL=os.getenv("BASE_URL")
+
+DEFAULT_BASE_URL = "https://anime-sama.org"
+BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
+_INVALID_FILENAME_CHARS = '<>:"/\\|?*'
+
+
+def _normalize_output_path(raw_path: str) -> Path:
+    """Ensure the output path is valid on Windows and directories exist."""
+
+    cleaned = (raw_path or "").strip() or "scans_data.json"
+    path = Path(cleaned)
+    safe_name = "".join("_" if ch in _INVALID_FILENAME_CHARS else ch for ch in path.name)
+    path = path.with_name(safe_name)
+    if not path.is_absolute():
+        path = Path.cwd() / path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return path
 
 
 def extract_scan_type_from_url(url: str) -> str:
     """
     Extract scan type from URL.
-    E.g., "https://anime-sama.fr/catalogue/solo-leveling/scan_ragnarok/vf" -> "scan_ragnarok"
+    E.g., "https://anime-sama.org/catalogue/solo-leveling/scan_ragnarok/vf" -> "scan_ragnarok"
     """
     match = re.search(r'/([^/]+)/vf/?$', url)
     if match:
@@ -27,7 +46,7 @@ def scrape_all_scans_from_manga_data(manga_data_path: str = 'manga_data.json', o
     [
       {
         "title": "Solo Leveling",
-        "link": "https://anime-sama.fr/catalogue/solo-leveling/",
+    "link": "https://anime-sama.org/catalogue/solo-leveling/",
         "type": "Scans",
         "scans": {
           "scan": { "chapters": [...] },
@@ -75,8 +94,10 @@ def scrape_all_scans_from_manga_data(manga_data_path: str = 'manga_data.json', o
                 "scans": scans_dict
             })
 
+    output_file = _normalize_output_path(output_path)
+
     # Write output file
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(all_scans_data, f, ensure_ascii=False, indent=2)
 
     return all_scans_data

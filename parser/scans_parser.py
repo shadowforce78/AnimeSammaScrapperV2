@@ -1,27 +1,44 @@
-import requests
 import bs4
 from urllib.parse import quote
 from typing import Dict, List, Optional
 import os
 import dotenv
+
+from utils.scraper import fetch
 dotenv.load_dotenv()
 
-BASE_URL=os.getenv("BASE_URL")
+DEFAULT_BASE_URL = "https://anime-sama.org"
+BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
+
+
+def normalize_catalogue_url(url: str) -> str:
+    if not url:
+        return url
+    prefixes = [
+        "https://anime-sama.org",
+        "http://anime-sama.org",
+        "https://www.anime-sama.org",
+        "http://www.anime-sama.org",
+    ]
+    for prefix in prefixes:
+        if url.startswith(prefix):
+            return url.replace(prefix, BASE_URL, 1)
+    return url
 
 def parse_scan_chapters(url: str) -> Optional[Dict]:
     """
     Parse all chapters and images for a given manga scan URL
     
     Args:
-        url: Full URL to the manga scan page (e.g., "https://anime-sama.fr/catalogue/solo-leveling/scan/vf/")
+        url: Full URL to the manga scan page (e.g., "https://anime-sama.org/catalogue/solo-leveling/scan/vf/")
         
     Returns:
         Dictionary with 'title' and 'chapters' (list of chapter dicts with 'chapter' and 'images')
         Returns None if parsing fails
     """
     try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
+        normalized_url = normalize_catalogue_url(url)
+        response = fetch(normalized_url)
         soup = bs4.BeautifulSoup(response.text, "html.parser")
         
         # Get the oeuvre title
@@ -34,12 +51,8 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
         
         # Get metadata (chapters and number of images per chapter)
         url_metadata = f"{BASE_URL}/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
-        response = requests.get(url_metadata, timeout=10)
-        
-        if not response.ok:
-            return None
-        
-        data = response.json()
+        metadata_response = fetch(url_metadata)
+        data = metadata_response.json()
         
         # Check if API returned an error
         if "error" in data:
@@ -65,7 +78,7 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
             })
         
         return {
-            "url": url,
+            "url": normalized_url,
             "title": nom_oeuvre,
             "chapters": all_images
         }

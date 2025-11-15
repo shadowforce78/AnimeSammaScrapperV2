@@ -11,7 +11,7 @@ def add_scans_to_db(scans_data: List[Dict], save_to_file: Optional[str] = None, 
     [
       {
         "title": "Solo Leveling",
-        "link": "https://anime-sama.fr/catalogue/solo-leveling/",
+        "link": "https://anime-sama.org/catalogue/solo-leveling/",
         "type": "Scans",
         "scans": {
           "scan": { "url": "...", "title": "...", "chapters": [...] },

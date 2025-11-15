@@ -1,10 +1,13 @@
-import requests
-import dotenv
 import os
+from typing import Optional
+
 import bs4
+import dotenv
+
 from parser.gernres_parser import parse_genres
 from parser.language_parser import parse_languages
 from parser.type_parser import parse_types
+from utils.scraper import fetch
 
 dotenv.load_dotenv()
 
@@ -12,13 +15,14 @@ URL_BASE = os.getenv("URL_BASE")
 CATALOGUE = os.getenv("CATALOGUE")
 CATALOGUE_PAGE = os.getenv("CATALOGUE_PAGE")
 
+first_page_soup, genres, languages, types, max_pages, soup = None, None, None, None, None, None
 
 def fetch_catalogue_page(page=1):
-    """Fetch a specific catalogue page"""
+    """Fetch a specific catalogue page using the hardened scraper session."""
+    if not URL_BASE or not CATALOGUE or not CATALOGUE_PAGE:
+        raise RuntimeError("Les variables d'environnement du catalogue sont manquantes")
     url = f"{URL_BASE}{CATALOGUE}{CATALOGUE_PAGE}{page}"
-    response = requests.get(url)
-    response.raise_for_status()  # Raise an error for bad responses
-    return response
+    return fetch(url)
 
 
 def get_max_page_number(soup):
@@ -60,31 +64,35 @@ def get_max_page_number(soup):
     return 1
 
 
-# Fetch first page to get utils and determine page count
-first_page_response = fetch_catalogue_page(1)
-first_page_soup = bs4.BeautifulSoup(first_page_response.text, "html.parser")
+def bootstrap_catalogue(force_refresh: bool = False):
+    global first_page_soup, genres, languages, types, max_pages, soup
 
-# Parse utils from first page only
-genres = parse_genres(first_page_soup)
-languages = parse_languages(first_page_soup)
-types = parse_types(first_page_soup)
+    if first_page_soup is not None and not force_refresh:
+        return
 
-# Determine total number of pages
-max_pages = get_max_page_number(first_page_soup)
-
-# Store first page soup for compatibility
-soup = first_page_soup
+    response = fetch_catalogue_page(1)
+    first_page_soup = bs4.BeautifulSoup(response.text, "html.parser")
+    first_page_soup = first_page_soup
+    soup = first_page_soup
+    genres = parse_genres(first_page_soup)
+    languages = parse_languages(first_page_soup)
+    types = parse_types(first_page_soup)
+    max_pages = get_max_page_number(first_page_soup)
 
 
 def return_data():
+    bootstrap_catalogue()
     return {"genres": genres, "languages": languages, "types": types}
 
 
 def fetch_all_catalogue_pages():
     """Fetch all catalogue pages and return all soups"""
-    all_soups = [first_page_soup]  # Include first page
+    bootstrap_catalogue()
 
-    for page in range(2, max_pages + 1):
+    all_soups = [first_page_soup] if first_page_soup else []
+    total_pages = max_pages or 1
+
+    for page in range(2, total_pages + 1):
         try:
             response = fetch_catalogue_page(page)
             page_soup = bs4.BeautifulSoup(response.text, "html.parser")

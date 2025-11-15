@@ -1,13 +1,15 @@
-import requests
 import bs4
 import re
 from urllib.parse import quote
 from typing import Dict, List, Optional
 import dotenv
 import os
+
+from utils.scraper import fetch
 dotenv.load_dotenv()
 
-BASE_URL=os.getenv("BASE_URL")
+DEFAULT_BASE_URL = "https://anime-sama.org"
+BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
 
 def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[str, List[str]]]:
     """
@@ -30,8 +32,7 @@ def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[st
         page_url = f"{BASE_URL}/catalogue/{encoded_title}/{anime_url}"
         
         # Récupérer la page
-        response = requests.get(page_url, timeout=10)
-        response.raise_for_status()
+        response = fetch(page_url)
         soup = bs4.BeautifulSoup(response.text, "html.parser")
         
         # Trouver l'ID du fichier episodes.js
@@ -48,8 +49,7 @@ def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[st
         episodes_js_url = f"{BASE_URL}/catalogue/{encoded_title}/{anime_url}/episodes.js?filever={episode_id}"
         
         # Récupérer le contenu JavaScript
-        js_response = requests.get(episodes_js_url, timeout=10)
-        js_response.raise_for_status()
+        js_response = fetch(episodes_js_url)
         js_content = js_response.text
         
         # Parser le contenu JavaScript
