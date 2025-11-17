@@ -9,7 +9,7 @@ from parser.scrape_scans import scrape_all_scans_from_manga_data
 import json
 
 # Scrap utils first (genres, languages, types from first page only)
-# add_utils_to_db(return_data()) # Scraped ✅
+add_utils_to_db(return_data()) # Scraped ✅
 
 # Scrap catalogue title next
 all_soups = fetch_all_catalogue_pages()
