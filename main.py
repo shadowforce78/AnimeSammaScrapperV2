@@ -9,11 +9,13 @@ from parser.scrape_scans import scrape_all_scans_from_manga_data
 import json
 
 # Scrap utils first (genres, languages, types from first page only)
-add_utils_to_db(return_data()) # Scraped ✅
+add_utils_to_db(return_data())  # Scraped ✅
 
 # Scrap catalogue title next
 all_soups = fetch_all_catalogue_pages()
 all_catalogue_items = parser_all_catalogue_pages(all_soups, fetch_details=True)
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump(all_catalogue_items, f, ensure_ascii=False, indent=2)
 
 with open("data.json", "r", encoding="utf-8") as f:
     all_catalogue_items = json.load(f)

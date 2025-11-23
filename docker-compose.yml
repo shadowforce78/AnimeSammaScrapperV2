@@ -1,0 +1,10 @@
+services:
+  scraper:
+    build: .
+    container_name: anime-sama-scraper
+    env_file:
+      - .env
+    volumes:
+      - ./.env:/app/.env:ro
+    command: python main.py
+    restart: unless-stopped
