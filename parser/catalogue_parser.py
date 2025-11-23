@@ -51,7 +51,6 @@ def parse_catalogue_from_soup(soup, fetch_details=False):
         
         # Fetch detailed information if requested
         if fetch_details and parsed_item["link"]:
-            print(f"      🔗 Récupération des détails de: {parsed_item['title']}")
             details = parse_oeuvre_details(parsed_item["link"])
             if details:
                 parsed_item["details"] = details
@@ -77,10 +76,7 @@ def parser_all_catalogue_pages(soups, fetch_details=False):
     all_items = []
     
     for i, soup in enumerate(soups, 1):
-        print(f"🔍 Parsing de la page {i}/{len(soups)}...")
         items = parse_catalogue_from_soup(soup, fetch_details=fetch_details)
         all_items.extend(items)
-        print(f"   ✓ {len(items)} ouvrages trouvés sur cette page")
     
-    print(f"\n🎉 Total : {len(all_items)} ouvrages récupérés")
     return all_items

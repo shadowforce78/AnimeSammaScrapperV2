@@ -113,5 +113,5 @@ def parse_oeuvre_details(url: str) -> Optional[Dict[str, Any]]:
         return details
         
     except Exception as e:
-        print(f"   ❌ Erreur lors du parsing de {url}: {e}")
+        print(f"Erreur lors du parsing de {url}: {e}")
         return None
