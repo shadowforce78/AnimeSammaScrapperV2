@@ -9,8 +9,7 @@ from parser.scans_parser import parse_scan_chapters
 
 dotenv.load_dotenv()
 
-DEFAULT_BASE_URL = "https://anime-sama.org"
-BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
+URL_BASE = (os.getenv("URL_BASE"))
 _INVALID_FILENAME_CHARS = '<>:"/\\|?*'
 
 

@@ -23,7 +23,7 @@ SCRAPER_USER_AGENT = os.getenv(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0 Safari/537.36",
 )
 SCRAPER_ACCEPT_LANGUAGE = os.getenv("SCRAPER_ACCEPT_LANGUAGE", "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7")
-SCRAPER_REFERER = os.getenv("SCRAPER_REFERER", "https://anime-sama.org")
+SCRAPER_REFERER = os.getenv("SCRAPER_REFERER", "https://anime-sama.eu")
 SCRAPER_COOKIES = os.getenv("SCRAPER_COOKIES", "")
 SCRAPER_ACCEPT_ENCODING = os.getenv("SCRAPER_ACCEPT_ENCODING", "gzip, deflate")
 SCRAPER_PRAGMA = os.getenv("SCRAPER_PRAGMA", "no-cache")

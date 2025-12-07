@@ -8,6 +8,8 @@ from parser.scrape_episodes import scrape_all_episodes_from_catalogue
 from parser.scrape_scans import scrape_all_scans_from_manga_data
 import json
 
+URL_BASE = (os.getenv("URL_BASE"))
+
 # Scrap utils first (genres, languages, types from first page only)
 add_utils_to_db(return_data())  # Scraped ✅
 
@@ -40,7 +42,7 @@ for item in all_catalogue_items:
         manga_by_title[title] = []
 
         for manga in manga_disponible:
-            full_url = f"https://anime-sama.org/catalogue/{title.lower().replace(' ', '-').replace('#', '')}/{manga['url']}"
+            full_url = f"{URL_BASE}/catalogue/{title.lower().replace(' ', '-').replace('#', '')}/{manga['url']}"
             manga_by_title[title].append(full_url)
 
 with open("manga_data.json", "w", encoding="utf-8") as f:

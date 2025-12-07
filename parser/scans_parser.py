@@ -7,22 +7,21 @@ import dotenv
 from utils.scraper import fetch
 dotenv.load_dotenv()
 
-DEFAULT_BASE_URL = "https://anime-sama.org"
-BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
+URL_BASE = (os.getenv("URL_BASE"))
 
 
 def normalize_catalogue_url(url: str) -> str:
-    if not url:
-        return url
-    prefixes = [
-        "https://anime-sama.org",
-        "http://anime-sama.org",
-        "https://www.anime-sama.org",
-        "http://www.anime-sama.org",
-    ]
-    for prefix in prefixes:
-        if url.startswith(prefix):
-            return url.replace(prefix, BASE_URL, 1)
+    # if not url:
+    #     return url
+    # prefixes = [
+    #     "https://anime-sama.org",
+    #     "http://anime-sama.org",
+    #     "https://www.anime-sama.org",
+    #     "http://www.anime-sama.org",
+    # ]
+    # for prefix in prefixes:
+    #     if url.startswith(prefix):
+    #         return url.replace(prefix, URL_BASE, 1)
     return url
 
 def parse_scan_chapters(url: str) -> Optional[Dict]:
@@ -50,7 +49,7 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
         nom_oeuvre = titre_oeuvre_tag.get_text()
         
         # Get metadata (chapters and number of images per chapter)
-        url_metadata = f"{BASE_URL}/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
+        url_metadata = f"{URL_BASE}/s2/scans/get_nb_chap_et_img.php?oeuvre={quote(nom_oeuvre)}"
         metadata_response = fetch(url_metadata)
         data = metadata_response.json()
         
@@ -69,7 +68,7 @@ def parse_scan_chapters(url: str) -> Optional[Dict]:
             chapter_num = chapter_info["chapter"]
             num_images = chapter_info["num_images"]
             images = [
-                f"{BASE_URL}/s2/scans/{quote(nom_oeuvre)}/{chapter_num}/{i}.jpg" 
+                f"{URL_BASE}/s2/scans/{quote(nom_oeuvre)}/{chapter_num}/{i}.jpg" 
                 for i in range(1, num_images + 1)
             ]
             all_images.append({

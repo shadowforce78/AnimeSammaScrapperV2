@@ -8,8 +8,7 @@ import os
 from utils.scraper import fetch
 dotenv.load_dotenv()
 
-DEFAULT_BASE_URL = "https://anime-sama.org"
-BASE_URL = (os.getenv("BASE_URL") or os.getenv("URL_BASE") or DEFAULT_BASE_URL).rstrip("/")
+URL_BASE = (os.getenv("URL_BASE"))
 
 def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[str, List[str]]]:
     """
