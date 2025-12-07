@@ -84,7 +84,7 @@ def scrape_all_scans_from_manga_data(manga_data_path: str = 'manga_data.json', o
         # Only add entry if we have scans
         if scans_dict:
             # Build the catalogue link
-            catalogue_link = f"{BASE_URL}/catalogue/{anime_title.lower().replace(' ', '-').replace('#', '')}/"
+            catalogue_link = f"{URL_BASE}/catalogue/{anime_title.lower().replace(' ', '-').replace('#', '')}/"
             
             all_scans_data.append({
                 "title": anime_title,
