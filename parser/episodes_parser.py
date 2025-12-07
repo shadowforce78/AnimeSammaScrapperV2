@@ -28,7 +28,7 @@ def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[st
         encoded_title = quote(kebabed_title)
         
         # Construire l'URL complète de la page
-        page_url = f"{BASE_URL}/catalogue/{encoded_title}/{anime_url}"
+        page_url = f"{URL_BASE}/catalogue/{encoded_title}/{anime_url}"
         
         # Récupérer la page
         response = fetch(page_url)
@@ -45,7 +45,7 @@ def parse_episodes_from_url(base_title: str, anime_url: str) -> Optional[Dict[st
             return None
         
         # Construire l'URL du fichier episodes.js
-        episodes_js_url = f"{BASE_URL}/catalogue/{encoded_title}/{anime_url}/episodes.js?filever={episode_id}"
+        episodes_js_url = f"{URL_BASE}/catalogue/{encoded_title}/{anime_url}/episodes.js?filever={episode_id}"
         
         # Récupérer le contenu JavaScript
         js_response = fetch(episodes_js_url)
