@@ -6,8 +6,11 @@ from db.add_scans_to_db import add_scans_to_db
 from parser.catalogue_parser import parser_all_catalogue_pages
 from parser.scrape_episodes import scrape_all_episodes_from_catalogue
 from parser.scrape_scans import scrape_all_scans_from_manga_data
+import os
+import dotenv
 import json
 
+dotenv.load_dotenv()
 URL_BASE = (os.getenv("URL_BASE"))
 
 # Scrap utils first (genres, languages, types from first page only)
