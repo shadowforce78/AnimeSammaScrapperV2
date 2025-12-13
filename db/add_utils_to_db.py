@@ -12,4 +12,12 @@ def add_utils_to_db(data):
         "languages": languages,
         "types": types
     }
-    utils_collection.insert_one(utils_document)
+    
+    # Add a static identifier for the utils document
+    utils_document["id"] = "global_utils"
+    
+    utils_collection.update_one(
+        {"id": "global_utils"},
+        {"$set": utils_document},
+        upsert=True
+    )

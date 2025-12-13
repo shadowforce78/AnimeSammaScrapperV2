@@ -26,4 +26,9 @@ def add_data_to_db(data):
             item["anime_disponible"] = []
             item["manga_disponible"] = []
         # Insert into DB
-        oeuvres_collection.insert_one(item)
+        # Upsert into DB
+        oeuvres_collection.update_one(
+            {"title": item.get("title")},
+            {"$set": item},
+            upsert=True
+        )
