@@ -12348,6 +12348,10 @@
         {
           "nom": "The Compilation",
           "url": "oav/vostfr"
+        },
+        {
+          "nom": "Film",
+          "url": "film/vostfr"
         }
       ],
       "manga_disponible": [
@@ -33882,7 +33886,7 @@
     "link": "https://anime-sama.eu/catalogue/kaoru-hana-wa-rin-to-saku",
     "image": "https://cdn.statically.io/gh/Anime-Sama/IMG/img/contenu/kaoru-hana-wa-rin-to-saku0.jpg",
     "title": "Kaoru Hana Wa Rin to Saku",
-    "alt_title": "The Fragrant Flower Blooms With Dignity, Kaoruhana",
+    "alt_title": "Bloom, The Fragrant Flower Blooms With Dignity, Kaoruhana",
     "genres": [
       "Shônen",
       "Romance",
@@ -33895,7 +33899,7 @@
     "language": "VOSTFR, VF",
     "details": {
       "titre_principal": "Kaoru Hana Wa Rin to Saku",
-      "titre_alternatif": "The Fragrant Flower Blooms With Dignity, Kaoruhana",
+      "titre_alternatif": "Bloom, The Fragrant Flower Blooms With Dignity, Kaoruhana",
       "avancement": null,
       "correspondance": null,
       "synopsis": "Bien qu'ils soient mitoyens, le lycée public Chidori pour garçons et le prestigieux lycée privé pour filles Kikyō continuent à entretenir leur tradition de se haïr mutuellement au plus haut point. Tsumugi Rintarō pensait la même chose, jusqu'à ce qu'il fasse la rencontre de Wakuri Kaoruko, élève de Chidori et habituée de la pâtisserie tenue par ses parents. Malgré la désapprobation et les préjugés de leurs camarades respectifs, Rintarō et Kaoruko vont petit à petit se rapprocher, et tant pis ce qu'en pensent les autres !",
@@ -78302,6 +78306,10 @@
         {
           "nom": "Saison 2",
           "url": "saison2/vostfr"
+        },
+        {
+          "nom": "Saison 3",
+          "url": "saison3/vostfr"
         }
       ],
       "manga_disponible": [
